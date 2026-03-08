@@ -23,7 +23,8 @@ This workspace enforces the use of three primary frameworks:
 * Wait for the user to explicitly approve the generated Markdown specification in `openspec/changes/`.
 
 ### Phase 2: Task Hydration (Beads)
-* Once a specification is approved, you must translate the implementation plan into a machine-readable dependency graph.
+* **MANUAL COMMIT GATE:** Once a specification is approved, before phase 2, always ask me to commit code changes from phase 1. Also, suggest me the commit message for the changes.
+* Once the user confirms the commit, you must translate the implementation plan into a machine-readable dependency graph.
 * Break the work down into granular, 5-to-15-minute tasks.
 * Create an issue for each task using Beads (`bd create`).
 * Strictly apply dependency tags (e.g., UI components must be blocked by API routes; API routes must be blocked by database migrations).
@@ -36,7 +37,8 @@ This workspace enforces the use of three primary frameworks:
     * Run tests via the terminal to verify.
 * If you encounter an unexpected error, immediately halt and invoke the `superpowers-systematic-debugging` skill. Do not guess the fix. Trace the root cause.
 * Before marking any task as done, you MUST invoke the `superpowers-verification-before-completion` skill. You cannot claim a task is finished until you have run explicit verification commands in the terminal and confirmed the output matches the expected behavior.
-* When a task is complete, verified, and tests pass, run `bd <issue-id> complete` and immediately pull the next ready task.
+* **MANUAL COMMIT GATE:** Once tests pass and verification is complete, you must stop and ask the user to review the changes. **DO NOT run `git commit`.** Suggest a commit message and wait for the user to confirm they have reviewed and manually committed the code.
+* Once the user confirms the commit, run `bd <issue-id> complete` and immediately pull the next ready task.
 
 ### Phase 4: Automation Testing & Hand-off
 * For any user-facing features, you MUST write and execute automated end-to-end (E2E) tests to validate the complete user journey in the browser.
